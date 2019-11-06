@@ -1,5 +1,7 @@
 # bt2prom
 
+Format bpftrace JSON into prometheus-compat textfile
+
 ## install
 
 ```console
