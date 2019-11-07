@@ -10,6 +10,7 @@ class Bt2Prom
   end
 
   def to_prom_lines(l)
+    errcount = 0
     v = JSON.parse(l)
     ret = []
     case v["type"]
@@ -21,7 +22,7 @@ class Bt2Prom
       ret << buf
     when "map"
       data = v["data"]
-      if data.keys.first !~ /$@/
+      if data.keys.first !~ /^@/
         data.each do |arg0, value|
           buf = "bpftrace_map"
           buf << "{arg0=#{arg0.inspect}} "
@@ -32,20 +33,26 @@ class Bt2Prom
         data.each do |varname, values|
           values.each do |arg0, value|
             buf = "bpftrace_" << varname.sub("@", "var_")
-            buf << "{arg0=#{arg0.inspect}} "
+            labels = []
+            arg0.split(",").each_with_index do |arg, i|
+              labels << "arg#{i}=#{arg.inspect}"
+            end
+            buf << "{#{labels.join(",")}} "
             buf << value.to_s
             ret << buf
           end
         end
       end
     else
-      raise "Unknown type: #{v.inspect}"
+      $stderr.puts "Unknown type: #{v.inspect}"
+      errcount += 1
     end
 
     return ret
   rescue => e
     $stderr.puts e.inspect
-    nil
+    errcount += 1
+    ["bpftrace_parse_error_count #{errcount}"]
   end
 end
 
