@@ -22,10 +22,9 @@ class Bt2Prom
       ret << buf
     when "map"
       data = v["data"]
-      if data.keys.first !~ /^@/
-        data.each do |arg0, value|
-          buf = "bpftrace_map"
-          buf << "{arg0=#{arg0.inspect}} "
+      if data.first[1].is_a?(Integer)
+        data.each do |varname, value|
+          buf = "bpftrace_" << varname.sub("@", "var_") << " "
           buf << value.to_s
           ret << buf
         end
@@ -40,6 +39,48 @@ class Bt2Prom
             buf << "{#{labels.join(",")}} "
             buf << value.to_s
             ret << buf
+          end
+        end
+      end
+    when "hist"
+      data = v["data"]
+      if data.first[1].is_a?(Array)
+        data.each do |varname, bins|
+          bins.each do |bin|
+            buf = "bpftrace_" << varname.sub("@", "var_")
+            labels = []
+            if !bin["min"]
+              labels << "max=\"#{bin["max"]}\""
+              labels << "range=\"..#{bin["max"]}\""
+            else
+              labels << "max=\"#{bin["max"]}\""
+              labels << "min=\"#{bin["min"]}\""
+              labels << "range=\"#{bin["min"]}..#{bin["max"]}\""
+            end
+            buf << "{#{labels.join(",")}} "
+            buf << bin["count"].to_s
+            ret << buf
+          end
+        end
+      else
+        data.each do |varname, values|
+          values.each do |arg0, bins|
+            bins.each do |bin|
+              buf = "bpftrace_" << varname.sub("@", "var_")
+              labels = []
+              labels << "arg0=#{arg0.inspect}"
+              if !bin["min"]
+                labels << "max=\"#{bin["max"]}\""
+                labels << "range=\"..#{bin["max"]}\""
+              else
+                labels << "max=\"#{bin["max"]}\""
+                labels << "min=\"#{bin["min"]}\""
+                labels << "range=\"#{bin["min"]}..#{bin["max"]}\""
+              end
+              buf << "{#{labels.join(",")}} "
+              buf << bin["count"].to_s
+              ret << buf
+            end
           end
         end
       end
