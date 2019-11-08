@@ -7,7 +7,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
-      - name: setup
+      - uses: actions/setup-ruby@master
+        with:
+          version: 2.6.x
+      - name: setup rake
         run: |
           gem install rake
       - name: build
