@@ -1,4 +1,4 @@
-name: Hello CI
+name: GitHub Action CI
 on: [push]
 
 jobs:
@@ -8,12 +8,12 @@ jobs:
     container: udzura/mruby-build-base:0.1.1
     steps:
       - uses: actions/checkout@v1
-      - name: build
+      - name: Build binary
         env:
           MRUBY_VERSION: master
         run: |
           rake
-      - name: test
+      - name: Run tests
         env:
           MRUBY_VERSION: master
         run: |

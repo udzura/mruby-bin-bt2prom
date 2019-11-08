@@ -1,6 +1,6 @@
 # bt2prom
 
-Format bpftrace JSON into prometheus-compat textfile
+Format bpftrace JSON into prometheus-compat textfile ![](https://github.com/udzura/mruby-bin-bt2prom/workflows/GitHub%20Action%20CI/badge.svg)
 
 ## install
 
