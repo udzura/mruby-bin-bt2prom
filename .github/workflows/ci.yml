@@ -5,7 +5,7 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-18.04
-    container: udzura/mruby-build-base:latest
+    container: udzura/mruby-build-base:0.1.1
     steps:
       - uses: actions/checkout@v1
       - name: build
