@@ -6,13 +6,17 @@ jobs:
     name: Build and test
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v1
+      - name: setup
+        run: |
+          apt install -y rake
       - name: build
         env:
           MRUBY_VERSION: master
         run: |
-          apt-get -y install rake && rake
+          rake
       - name: test
         env:
           MRUBY_VERSION: master
         run: |
-          apt-get -y install rake && rake test
+          rake test
