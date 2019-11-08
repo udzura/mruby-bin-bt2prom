@@ -1,7 +1,0 @@
-name: mruby-bin-bt2prom
-description: BinBt2prom class
-author: Uchio Kondo
-website: https://github.com/udzura/mruby-bin-bt2prom
-protocol: git
-repository: https://github.com/udzura/mruby-bin-bt2prom.git
-license: MIT
