@@ -5,14 +5,9 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-18.04
+    container: udzura/mruby-build-base:latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@master
-        with:
-          version: 2.6.x
-      - name: setup rake
-        run: |
-          gem install rake
       - name: build
         env:
           MRUBY_VERSION: master
