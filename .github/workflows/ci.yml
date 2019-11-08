@@ -10,9 +10,9 @@ jobs:
         env:
           MRUBY_VERSION: master
         run: |
-          rake
+          apt-get -y install rake && rake
       - name: test
         env:
           MRUBY_VERSION: master
         run: |
-          rake test
+          apt-get -y install rake && rake test
