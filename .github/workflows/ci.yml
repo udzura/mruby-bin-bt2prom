@@ -18,3 +18,7 @@ jobs:
           MRUBY_VERSION: master
         run: |
           rake test
+      - uses: actions/upload-artifact@master
+        with:
+          name: bt2prom
+          path: mruby/bin/bt2prom
