@@ -22,6 +22,7 @@ class Bt2Prom
       ret << buf
     when "map"
       data = v["data"]
+      $stderr.puts data.inspect
       if data.first[1].is_a?(Integer)
         data.each do |varname, value|
           buf = "bpftrace_" << varname.sub("@", "var_") << " "
@@ -92,6 +93,7 @@ class Bt2Prom
     return ret
   rescue => e
     $stderr.puts e.inspect
+    $stderr.puts e.backtrace
     errcount += 1
     ["bpftrace_parse_error_count #{errcount}"]
   end
