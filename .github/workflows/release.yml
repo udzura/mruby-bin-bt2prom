@@ -16,7 +16,7 @@ jobs:
       - name: Build project
         run: |
           rake
-          zip --junk-paths bt2prom.${{ github.ref }}.zip mruby/bin/bt2prom
+          zip --junk-paths bt2prom.$(echo ${{ github.ref }} | awk -F'/' '{print $3}').zip mruby/bin/bt2prom
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
