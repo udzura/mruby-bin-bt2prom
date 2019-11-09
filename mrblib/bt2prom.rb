@@ -22,6 +22,7 @@ class Bt2Prom
       ret << buf
     when "map"
       data = v["data"]
+      $stderr.puts data.inspect
       if data.first[1].is_a?(Integer)
         data.each do |varname, value|
           buf = "bpftrace_" << varname.sub("@", "var_") << " "
@@ -44,6 +45,7 @@ class Bt2Prom
       end
     when "hist"
       data = v["data"]
+      $stderr.puts data.inspect
       if data.first[1].is_a?(Array)
         data.each do |varname, bins|
           bins.each do |bin|
