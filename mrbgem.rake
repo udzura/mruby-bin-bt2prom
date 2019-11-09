@@ -21,7 +21,8 @@ MRuby::Gem::Specification.new('mruby-bin-bt2prom') do |spec|
 
   spec.core_gem 'mruby-io'
   spec.core_gem 'mruby-array-ext'
-  spec.core_gem 'mruby-metaprog'
+  spec.core_gem 'mruby-hash-ext'
+  spec.core_gem 'mruby-enum-ext'
   spec.mgem 'mruby-json'
   spec.mgem 'mruby-onig-regexp'
   spec.github_gem 'fastly/mruby-optparse'
