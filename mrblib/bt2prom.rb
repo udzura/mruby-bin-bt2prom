@@ -45,7 +45,6 @@ class Bt2Prom
       end
     when "hist"
       data = v["data"]
-      $stderr.puts data.inspect
       if data.first[1].is_a?(Array)
         data.each do |varname, bins|
           bins.each do |bin|
