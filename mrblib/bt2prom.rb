@@ -92,6 +92,7 @@ class Bt2Prom
     return ret
   rescue => e
     $stderr.puts e.inspect
+    $stderr.puts e.backtrace
     errcount += 1
     ["bpftrace_parse_error_count #{errcount}"]
   end
