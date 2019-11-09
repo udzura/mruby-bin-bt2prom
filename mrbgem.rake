@@ -15,8 +15,8 @@ MRuby::Gem::Specification.new('mruby-bin-bt2prom') do |spec|
     self.add_dependency gemname, mgem: gemname
   end
 
-  def spec.github_gem(repofullname)
-    self.add_dependency repofullname.split('/').last, github: repofullname
+  def spec.github_gem(repofullname, opts={})
+    self.add_dependency repofullname.split('/').last, opts.merge(github: repofullname)
   end
 
   spec.core_gem 'mruby-io'
@@ -26,4 +26,5 @@ MRuby::Gem::Specification.new('mruby-bin-bt2prom') do |spec|
   spec.mgem 'mruby-json'
   spec.mgem 'mruby-onig-regexp'
   spec.github_gem 'fastly/mruby-optparse'
+  spec.github_gem 'udzura/mruby-catch-throw', branch: 'fix-test-warnings' # for a while
 end

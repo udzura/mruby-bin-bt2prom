@@ -35,3 +35,8 @@ builds:
       branch: master
       commit: 34a477d249b0d21671058be33aa75d04c3e981ba
       version: 0.0.0
+    https://github.com/udzura/mruby-catch-throw.git:
+      url: https://github.com/udzura/mruby-catch-throw.git
+      branch: master
+      commit: b2900a21e71efb4702c2750e6e9312f46d6d2560
+      version: 1.1.0
