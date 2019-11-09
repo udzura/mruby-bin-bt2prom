@@ -9,6 +9,10 @@ class Bt2Prom
     end
   end
 
+  def version
+    puts "#{$0} #{VERSION}"
+  end
+
   def to_prom_lines(l)
     errcount = 0
     v = JSON.parse(l)
@@ -101,5 +105,10 @@ end
 
 def __main__(argv)
   cli = Bt2Prom.new
-  cli.run
+  case argv[0]
+  when /(-+)?v(ersion)?/
+    cli.version
+  else
+    cli.run
+  end
 end
