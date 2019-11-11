@@ -25,6 +25,6 @@ MRuby::Gem::Specification.new('mruby-bin-bt2prom') do |spec|
   spec.core_gem 'mruby-enum-ext'
   spec.mgem 'mruby-json'
   spec.mgem 'mruby-onig-regexp'
+  spec.mgem 'mruby-catch-throw'
   spec.github_gem 'fastly/mruby-optparse'
-  spec.github_gem 'udzura/mruby-catch-throw', branch: 'fix-test-warnings' # for a while
 end

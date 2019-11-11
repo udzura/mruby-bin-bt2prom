@@ -15,16 +15,16 @@ builds:
       branch: master
       commit: e55923997ba33586b58c11bd3ca2d40c11a8dede
       version: 0.0.0
+    https://github.com/IceDragon200/mruby-catch-throw:
+      url: https://github.com/IceDragon200/mruby-catch-throw
+      branch: master
+      commit: 2b6eaff4232b4a9473b864df53c2917080af5dcf
+      version: 1.1.0
     https://github.com/fastly/mruby-optparse.git:
       url: https://github.com/fastly/mruby-optparse.git
       branch: master
       commit: e6397a090d1efe04d5dab57c63897f0d79bbad89
       version: 0.0.0
-    https://github.com/udzura/mruby-catch-throw.git:
-      url: https://github.com/udzura/mruby-catch-throw.git
-      branch: fix-test-warnings
-      commit: ca7abc85b90ec995fa3e58728532a6566bd2ec98
-      version: 1.1.0
     https://github.com/iij/mruby-env.git:
       url: https://github.com/iij/mruby-env.git
       branch: master
