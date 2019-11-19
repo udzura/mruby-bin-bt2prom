@@ -26,7 +26,7 @@ class Bt2Prom
       ret << buf
     when "map"
       data = v["data"]
-      $stderr.puts data.inspect
+      $stderr.puts data.inspect if ENV['DEBUG']
       if data.first[1].is_a?(Integer)
         data.each do |varname, value|
           buf = "bpftrace_" << varname.sub("@", "var_") << " "

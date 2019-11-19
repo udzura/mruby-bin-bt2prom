@@ -25,5 +25,6 @@ MRuby::Gem::Specification.new('mruby-bin-bt2prom') do |spec|
   spec.core_gem 'mruby-enum-ext'
   spec.mgem 'mruby-json'
   spec.mgem 'mruby-onig-regexp'
+  spec.mgem 'mruby-env'
   spec.github_gem 'fastly/mruby-optparse'
 end
