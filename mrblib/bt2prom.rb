@@ -1,5 +1,5 @@
 class Bt2Prom
-  VERSION = "0.2.0"
+  VERSION = "0.2.1"
 
   def run
     $stdin.each_line do |l|
